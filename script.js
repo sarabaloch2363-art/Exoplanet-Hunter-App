@@ -6,25 +6,15 @@ const planets = [
 ];
 
 function displayPlanets(data) {
-    const grid = document.getElementById('planetGrid') || document.queryselector('.grid') || document.body;
-  
-// Clean screen except search bar
-  const existingCards = document.querySelectorAll('.planet-card');
-  existingCards.forEach(card => card.remove());
+    const grid = document.getElementById('planetGrid');
+    if (!grid) = return;
+    grid.innerHTML = '';
   
 data.forEach(p => {
   const card = document.createElement('div');
   card.className = 'planet-card';
-  card.style.border = '1px solid #4a90e2';
-  card.style.margin = '10px auto';
-  card.style.padding = '15px';
-  card.style.borderRadius = '8px';
-  card.style.maxWidth = '400px';
-  card.style.backgroundColor = 'rgba(255, 255, 0.1)';
-  card.style.color = '#fff';
-  
   card.innerHTML = `
-    <h3 style="color: #4fc3f7;"> ${p.name}</h3>
+    <h3> ${p.name}</h3>
     <p><strong>Radius:</strong> ${p.radius}</p>
     <p><strong>Temperature:</strong> ${p.temp}</p>
     <p><strong>Method:</strong> ${p.method}</p>
@@ -33,20 +23,27 @@ data.forEach(p => {
   });
 }
 
-// Search feature setup
-document.addEventListener('DOMContentLoaded', () => {
-  displayPlanets(planets);
-  
-const searchInput = document.querySelector('input');
-if (searchInput) {
-  searchInput.addEventListener('input', (e) => {
-    const query = e.target.value.toLowerCase();
+// Search function to match index.html
+function filterPlanets() {
+  const input = document.getElementById('searchInut');
+  if (!input) return;
+  const query = input.value.toLowerCase();
   const filtered = planets.filter(p => p.name.toLowerCase().includes(query));
   displayPlanets(filtered);
-});
 }
+
+// Event listener for typing in search
+document.addEventListener('DOMContentLoaded', () = {
+  displayPlanets(planets);
+
+  const input = document.getElementById('searchInput');
+  if (input) {
+    input.addEventListener('keyup', filterPlanets);
+    input.addEventListener('input', filterPlanets);
+  }
 });
-// Direct call if page is already loaded
+
+// Run immediately
 displayPlanets(planets);
   
   
