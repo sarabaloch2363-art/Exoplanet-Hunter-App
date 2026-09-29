@@ -20,6 +20,35 @@ data.forEach(p => {
   });
 }
 
+function
+createDiscoveryChart(data) {
+    const canvas = document.getElementById('planetChart');
+    if (!canvas) return;
+    const counts = {};
+    data.forEach(p => { counts[p.method] = (counts[p.method] || 0) + 1;
+ });
+
+ new Chart(canvas, {
+     type: 'bar',
+     data: {
+     labels: Object.keys(counts),
+     datasets: [{
+     label: 'Number of Exoplanets',
+     data: Object.values(counts)
+ }]
+},       
+     options: {
+         responsive: true,
+         plugins: {
+             title: {
+                 display: true,
+                 text: 'Exoplanets by Discovery Method'
+             }
+            }     
+           }
+         });
+    }
+    
 // Search function to match index.html
 function filterPlanets() {
   const input = document.getElementById('search-input');
@@ -46,6 +75,7 @@ async function loadPlanets() { try {
     }));       
 
   displayPlanets(planets);
+  createDiscoveryChart(planets);  
 } catch (error) {
   console.error('Error loading NASA data:', error);
   const grid = document.getElementById('planetGrid');
