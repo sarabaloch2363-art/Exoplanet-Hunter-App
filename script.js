@@ -49,6 +49,53 @@ createDiscoveryChart(data) {
            }
          });
     }
+
+function
+createOrbitalRadiusChart(data) {
+    const canvas = document.getElementById('orbitalRadiusChart');
+    if (!canvas) return;
+    const points = data.filter(p => p.pl_orbper != null)
+    .map(p => ({
+        x: p.pl_orbper,
+        y: p.pl_rade
+    }));
+
+  new Chart(canvas, {
+      type: 'scatter',
+      data: {
+          datasets: [{
+              label: 'Exoplanets',
+              data: points
+          }]
+      },
+      options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+              title: {
+                  display: true,
+                  text: 'Orbital Period vs Planet Radius'
+              }
+          },
+          scales: {
+              x: {
+                  type: 'logarithmic',
+                  title: {
+                      display: true,
+                      text: 'Orbital Period (days)'
+                    }
+              },
+              y: {
+                  type: 'logarithmic',
+                  title: {
+                      display: true,
+                      text: 'Planets Radius (Earth Radii)'
+                  }
+              }
+          }
+      }
+  });
+}
     
 // Search function to match index.html
 function filterPlanets() {
@@ -76,7 +123,8 @@ async function loadPlanets() { try {
     }));       
 
   displayPlanets(planets);
-  createDiscoveryChart(planets);  
+  createDiscoveryChart(planets);
+  createOrbitalRadiusChart(planets);  
 } catch (error) {
   console.error('Error loading NASA data:', error);
   const grid = document.getElementById('planetGrid');
