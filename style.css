@@ -120,9 +120,10 @@ header p {
 }  
   
 #planetChart {
-    width: 100% !important;
-    height: 100% !important;
-    margin: 25px auto;
+    width: 700px !important;
+    height: 300px !important;
+    max-width: 90%;
+    margin: 20px auto;
     display: block;
 }   
     
