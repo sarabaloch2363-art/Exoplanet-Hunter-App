@@ -1,6 +1,6 @@
 const planets = [
   { name: "11 Com b", radius: "12 Earth Radii", temp: "803 K", method: "Radial Velocity" },
-  { name: "Kepler-22b", radius: "2.4 Earth Radii", temp: "262 K", method: "Transit" }'
+  { name: "Kepler-22b", radius: "2.4 Earth Radii", temp: "262 K", method: "Transit" },
   { name: "Proxima Centauri b", radius: "1.07 Earth Radii", temp: "234 K", method: "Radical Velocity" },
   { name: "TRAPPIST-1e", radius: "0.92 Earth Radii", temp: "251 K", method: "Transit" }
 ];
