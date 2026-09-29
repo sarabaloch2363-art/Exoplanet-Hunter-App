@@ -34,7 +34,9 @@ createDiscoveryChart(data) {
      labels: Object.keys(counts),
      datasets: [{
      label: 'Number of Exoplanets',
-     data: Object.values(counts)
+     data: Object.values(counts),
+     barThickness: 12,
+     maxBarThickness: 12    
  }]
 },       
      options: {
