@@ -40,7 +40,7 @@ async function loadPlanets() { try {
       name: p.pl_name || 'Unknown',
       star: p.hostname || 'Unknown',
       radius: p.pl_rade != null ? `${p.pl_rade} Earth Radii` : 'N/A',
-      period: p.pl_orbper != null ? `$ {p.pl_orbper} days` : 'N/A',
+      period: p.pl_orbper != null ? `${p.pl_orbper} days` : 'N/A',
       temp: p.pl_eqt != null ? `${p.pl_eqt} K` : 'N/A',
       method: p.discoverymethod || 'Unknown'
     }));       
