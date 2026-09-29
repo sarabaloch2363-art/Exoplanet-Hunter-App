@@ -114,9 +114,9 @@ header p {
 }  
   
 #planetChart {
-    max-width: 500px;
-    max-height: 250px;
-    margin: 20px auto;
+    max-width: 750px !important;
+    max-height: 300px !important;
+    margin: 25px auto;
     display: block;
 }   
     
