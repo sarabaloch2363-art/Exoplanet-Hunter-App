@@ -41,7 +41,7 @@ header {
     align-items: center !important;
     justify-content: center !important;
     margin-top: 50px !important;
-    margin-bottom: 30px !important;
+    margin-bottom: 25px !important;
 }
 
 header h1 {
@@ -60,7 +60,7 @@ header p {
     justify-content: center !important;
     align-items: center !important;
     width: 100% !important;
-    margin-top: 10px !important;
+    margin-top: 15px !important;
 }
 
 #search-input {
