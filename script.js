@@ -4,8 +4,10 @@ function displayPlanets(data) {
     const grid = document.getElementById('planetGrid');
     if (!grid) return;
     grid.innerHTML = '';
-  
-data.forEach(p => {
+
+    const visiblePlanets = data.slice(0,30);
+    visiblePlanets.forEach(p =>
+        {
   const card = document.createElement('div');
   card.className = 'planet-card';
   card.innerHTML = `
