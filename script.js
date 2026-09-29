@@ -12,7 +12,7 @@ data.forEach(p => {
     <h3> ${p.name}</h3>
     <p><strong>HostStar:</strong> ${p.star}</p>
     <p><strong>Radius:</strong> ${p.radius}</p>
-    <p><strong>OrbitalPeriod:</strong> ${p.period}</p>
+    <p><strong>Orbital Period:</strong> ${p.period} </p>
     <p><strong>Temperature:</strong> ${p.temp}</p>
     <p><strong>Method:</strong> ${p.method}</p>
    `;
