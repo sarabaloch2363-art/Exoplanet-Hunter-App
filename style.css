@@ -113,4 +113,10 @@ header p {
     color: #d0d8e0;
 }  
   
-  
+#planetChart {
+    max-width: 700px;
+    max-height: 350px;
+    margin: 30px auto;
+    display: block;
+}   
+    
