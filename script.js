@@ -2,7 +2,7 @@ const planets = [
   { name: "11 Com b", radius: "12 Earth Radii", temp: "803 K", method: "Radial Velocity" },
   { name: "Kepler-22b", radius: "2.4 Earth Radii", temp: "262 K", method: "Transit" }'
   { name: "Proxima Centauri b", radius: "1.07 Earth Radii", temp: "234 K", method: "Radical Velocity" },
-  { name: "TRAPPIST-1E", radius: "0.92 Earth Radii", temp: "251 K", method: "Transit" }
+  { name: "TRAPPIST-1e", radius: "0.92 Earth Radii", temp: "251 K", method: "Transit" }
 ];
 
 function displayPlanets(data) {
@@ -25,9 +25,10 @@ data.forEach(p => {
 
 // Search function to match index.html
 function filterPlanets() {
-  const input = document.getElementById('searchInut');
+  const input = document.getElementById('search-input');
   if (!input) return;
-  const query = input.value.toLowerCase();
+  
+  const query = input.value.toLowerCase().trim();
   const filtered = planets.filter(p => p.name.toLowerCase().includes(query));
   displayPlanets(filtered);
 }
@@ -36,7 +37,7 @@ function filterPlanets() {
 document.addEventListener('DOMContentLoaded', () = {
   displayPlanets(planets);
 
-  const input = document.getElementById('searchInput');
+  const input = document.getElementById('search-input');
   if (input) {
     input.addEventListener('keyup', filterPlanets);
     input.addEventListener('input', filterPlanets);
@@ -45,6 +46,5 @@ document.addEventListener('DOMContentLoaded', () = {
 
 // Run immediately
 displayPlanets(planets);
-  
   
   
