@@ -2,7 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    front-family: 'Segeo UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Segeo UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 body {
@@ -50,7 +50,7 @@ header p {
     margin-bottom: 2rem;
 }
 
-#searchInput {
+#search-input {
     width: 100%;
     max-width: 500px;
     padding: 0.8rem 1.2rem;
@@ -60,9 +60,11 @@ header p {
     color: #fff;
     font-size: 1rem;
     outline: none;
+    display: block;
+    margin: 20px auto;
 }
 
-.planet-grid {
+#planetGrid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 1.5rem;
