@@ -7,7 +7,7 @@ const planets = [
 
 function displayPlanets(data) {
     const grid = document.getElementById('planetGrid');
-    if (!grid) = return;
+    if (!grid) return;
     grid.innerHTML = '';
   
 data.forEach(p => {
@@ -34,7 +34,7 @@ function filterPlanets() {
 }
 
 // Event listener for typing in search
-document.addEventListener('DOMContentLoaded', () = {
+document.addEventListener('DOMContentLoaded', () => {
   displayPlanets(planets);
 
   const input = document.getElementById('search-input');
