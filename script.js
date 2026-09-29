@@ -1,9 +1,4 @@
-const planets = [
-  { name: "11 Com b", radius: "12 Earth Radii", temp: "803 K", method: "Radial Velocity" },
-  { name: "Kepler-22b", radius: "2.4 Earth Radii", temp: "262 K", method: "Transit" },
-  { name: "Proxima Centauri b", radius: "1.07 Earth Radii", temp: "234 K", method: "Radical Velocity" },
-  { name: "TRAPPIST-1e", radius: "0.92 Earth Radii", temp: "251 K", method: "Transit" }
-];
+let planets = [];
 
 function displayPlanets(data) {
     const grid = document.getElementById('planetGrid');
@@ -15,7 +10,9 @@ data.forEach(p => {
   card.className = 'planet-card';
   card.innerHTML = `
     <h3> ${p.name}</h3>
+    <p><strong>HostStar:</strong> ${p.star}</p>
     <p><strong>Radius:</strong> ${p.radius}</p>
+    <p><strong>OrbitalPeriod:</strong> ${p.period}</p>
     <p><strong>Temperature:</strong> ${p.temp}</p>
     <p><strong>Method:</strong> ${p.method}</p>
    `;
@@ -33,18 +30,41 @@ function filterPlanets() {
   displayPlanets(filtered);
 }
 
+async function loadPlanets() { try {
+    const response = await fetch('planets.json');
+    if (!response.ok) { throw new
+ Error('Could not load planets.json');
+                      }
+    const nasaData = await response.json();
+    planets = nasaData.map(p => ({
+      name: p.pl_name || 'Unknown',
+      star: p.hostname || 'Unknown',
+      radius: p.pl_rade != null ? `${p.pl_rade} Earth Radii` : 'N/A',
+      period: p.pl_orbper != null ? `$ {p.pl_orbper} days` : 'N/A',
+      temp: p.pl_eqt != null ? `${p.pl_eqt} K` : 'N/A',
+      method: p.discoverymethod || 'Unknown'
+    }));       
+
+  displayPlanets(planets);
+} catch (error) {
+  console.error('Error loading NASA data:', error);
+  const grid = document.getElementById('planetGrid');
+  if (grid) { grid.innerHTML = `
+      <p>Unable to load NASA exoplanet data.</p>
+      `;
+      }
+    }
+  }                           
+
 // Event listener for typing in search
 document.addEventListener('DOMContentLoaded', () => {
-  displayPlanets(planets);
+  loadPlanets();
 
   const input = document.getElementById('search-input');
   if (input) {
-    input.addEventListener('keyup', filterPlanets);
     input.addEventListener('input', filterPlanets);
+    input.addEventListener('keyup', filterPlanets);
   }
 });
-
-// Run immediately
-displayPlanets(planets);
   
   
